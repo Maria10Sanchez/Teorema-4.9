@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Seccion - HTML Plano </title>
+</head>
+<body>
+    <section id="body">
+        <h2> Gestion de Notas (HTML Plain) </h2>
+        <button id="body_btNuevoEstudiante"> Nuevo Estudiante </button>
+        <hr>
+        <div>
+            La nota promedio de la seccion es: <span id="body_lblNotaPromedio"> 0 </span>
+        </div>
+        <div>
+            Cantidad de aprobados: <span id="body_lblEstudiantesAprobados"> 0 </span>
+        </div>
+        <div>
+            Cantidad de reprobados: <span id="body_lblEstudiantesReprobados"> 0 </span>
+        </div>
+    </section>
+
+
+    <section id="estudiante" hidden style="margin-top: 20px; border: 1px solid #ccc; padding: 15x; width: 300px;">
+        <h5 id="estudiante_lblEstudiante"> Procesar Estudiante </h5>
+        <div>
+            <label> Cedula:
+                <input type="text" id="estudiante_inCedula" placeholder="Ej: 123456">
+            </label>
+        </div>
+        <div>
+            <label> Nota Final:
+                <input type="text" id="estudiante_inNotaFinal" placeholder="Ej: 49">
+            </label>
+        </div>
+        <br>
+        <button id="estudiante_btAceptar"> Aceptar </button>
+        <button id="estudiante_btCancelar"> Cancelar </button>
+    </section>
+
+    <script type="module">
+        import cSeccion from "./dist/controllers/cSeccion.js";
+        import cEstudiante from "./dist/controllers/cEstudiante.js";
+
+        import vSeccionPlain from "./dist/views/vSeccionPlain.js";
+        import vEstudiantePlain from "./dist/views/vEstudiantePlain.js";
+
+        const vistaSeccion = new vSeccionPlain();
+        const vistaEstudiante = new vEstudiantePlain();
+
+        const controladorEstudiante = new cEstudiante(vistaEstudiante);
+        new cSeccion(vistaSeccion, controladorEstudiante);
+    </script>
+
+</body>
+</html>
