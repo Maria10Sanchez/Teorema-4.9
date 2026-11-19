@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Servicio de Delivery - HTML Plano </title>
+</head>
+<body>
+    <section id="body">
+        <h2> Servicio de Delivery (HTML Plain) </h2>
+        <button id="body_btNuevoMoto"> Nuevo envio en Moto </button>
+        <button id="body_btNuevoBici"> Nuevo envio en Bici </button>
+
+    <hr>
+    <div id="body_lblNumeroGuia"></div>
+    <br>
+        <div>
+            Total recaudado en envíos Moto: <span id="body_lblTotalMoto"> 0 </span>
+        </div>
+        <div>
+            Total recaudado en envíos Bici: <span id="body_lblTotalBici"> 0 </span>
+        </div>
+        <div>
+            Promedio general de costo de envío: <span id="body_lblPromedioEnvio"> 0 </span>
+        </div>
+    </section>
+
+
+    <section id="moto" hidden style="margin-top: 20px; border: 1px solid #ccc; padding: 15x; width: 300px;">
+        <h5 id="moto_lblMoto"> Procesar Envio Moto </h5>
+        <div>
+            <label> Guía:
+                <input type="text" id="moto_inGuia" placeholder="Ej: G100">
+            </label>
+        </div>
+        <div>
+            <label> Monto Pedido:
+                <input type="text" id="moto_inMontoPedido" placeholder="Ej: 50">
+            </label>
+        </div>
+        <div>
+            <label> Kilometros:
+                <input type="text" id="moto_inKilometro" placeholder="Ej: 5">
+            </label>
+        </div>
+        <br>
+        <button id="moto_btAceptar"> Aceptar </button>
+        <button id="moto_btCancelar"> Cancelar </button>
+    </section>
+
+
+    <section id="bici" hidden style="margin-top: 20px; border: 1px solid #ccc; padding: 15x; width: 300px;">
+        <h5 id="bici_lblBici"> Procesar Envio Bici </h5>
+        <div>
+            <label> Guía:
+                <input type="text" id="bici_inGuia" placeholder="Ej: G100">
+            </label>
+        </div>
+        <div>
+            <label> Monto Pedido:
+                <input type="text" id="bici_inMontoPedido" placeholder="Ej: 50">
+            </label>
+        </div>
+        <div>
+            <label> Bolso Termico:
+                <input type="checkbox" id="bici_inBolsaTerm">
+            </label>
+        </div>
+        <div>
+            <label> Hora Pico:
+                <input type="checkbox" id="bici_inHoraPico">
+            </label>
+        </div>
+        <br>
+        <button id="bici_btAceptar"> Aceptar </button>
+        <button id="bici_btCancelar"> Cancelar </button>
+    </section>
+
+    <script type="module">
+        import cDelivery from "./dist/controllers/cDelivery.js";
+        import cMoto from "./dist/controllers/cMoto.js";
+        import cBici from "./dist/controllers/cBici.js";
+
+        import vDeliveryPlain from "./dist/views/vDeliveryPlain.js";
+        import vMotoPlain from "./dist/views/vMotoPlain.js";
+        import vBiciPlain from "./dist/views/vBiciPlain.js";
+
+        const vistaDelivery = new vDeliveryPlain();
+        const vistaMoto = new vMotoPlain();
+        const vistaBici = new vBiciPlain();
+
+
+        const controladorMoto = new cMoto(vistaMoto);
+        const controladorBici = new cBici(vistaBici);
+        new cDelivery(vistaDelivery, controladorMoto, controladorBici)
+    </script>
+
+</body>
+</html>
